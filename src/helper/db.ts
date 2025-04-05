@@ -10,6 +10,7 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD || "1967",
   port: Number(process.env.DB_PORT) || 5432,
 });
+console.log("pool line ------ 13", pool);
 
 // const pool = new Pool({
 //   user: process.env.DB_USER || "postgres",
