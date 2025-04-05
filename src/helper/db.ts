@@ -10,7 +10,6 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD || "1967",
   port: Number(process.env.DB_PORT) || 5432,
 });
-console.log("pool line ------ 13", pool);
 
 // const pool = new Pool({
 //   user: process.env.DB_USER || "postgres",
@@ -37,6 +36,8 @@ export const executeQuery = async (
   query: string,
   params: any[] = []
 ): Promise<any[]> => {
+  console.log("pool line ------ 39", pool);
+
   // Ensuring the return type is an array of any
   let client: PoolClient | null = null; // Initialize client as null
   try {
@@ -54,12 +55,16 @@ export const executeQuery = async (
 
 // Method to get a client from the pool for transactions
 export const getClient = async (): Promise<PoolClient> => {
+  console.log("pool line ------ 58", pool);
+
   const client = await pool.connect(); // Return a connected client
   return client;
 };
 
 // Optionally, create a method to close the pool when the app shuts down
 export const closePool = async () => {
+  console.log("pool line ------ 66", pool);
+
   try {
     await pool.end();
     console.log("Database pool has been closed.");
