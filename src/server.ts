@@ -11,43 +11,38 @@ const init = async () => {
   try {
     DotEnv.config();
 
-    // const server = Hapi.server({
-    //   host: "0.0.0.0",
-    //   port: 6201,
-    //   routes: {
-    //     cors: {
-    //       origin: [
-    //         "65.1.147.86",
-    //         "13.203.86.57",
-    //         "65.2.63.226",
-    //         "13.203.158.161",
-    //       ], // Allowed origins
-    //       headers: ["Accept", "Authorization", "Content-Type", "If-None-Match"], // Allowed headers
-    //       exposedHeaders: ["WWW-Authenticate", "Server-Authorization"], // Exposed headers
-    //       credentials: true, // Allow credentials (cookies/auth headers)
-    //     },
-    //     payload: {
-    //       maxBytes: 5242880,
-    //     },
-    //   },
-    // });
-
     const server = Hapi.server({
-      host: process.env.HOST || "localhost",
-      port: process.env.PORT || 6201,
+      host: "0.0.0.0",
+      port: 6201,
       routes: {
         cors: {
-          origin: ["*"],
-          headers: ["Accept", "Authorization", "Content-Type", "If-None-Match"],
-          exposedHeaders: ["WWW-Authenticate", "Server-Authorization"],
-          credentials: true,
+          origin: ["*"], // Allowed origins
+          headers: ["Accept", "Authorization", "Content-Type", "If-None-Match"], // Allowed headers
+          exposedHeaders: ["WWW-Authenticate", "Server-Authorization"], // Exposed headers
+          credentials: true, // Allow credentials (cookies/auth headers)
         },
-        security: true,
         payload: {
           maxBytes: 5242880,
         },
       },
     });
+
+    // const server = Hapi.server({
+    //   host: process.env.HOST || "localhost",
+    //   port: process.env.PORT || 6201,
+    //   routes: {
+    //     cors: {
+    //       origin: ["*"],
+    //       headers: ["Accept", "Authorization", "Content-Type", "If-None-Match"],
+    //       exposedHeaders: ["WWW-Authenticate", "Server-Authorization"],
+    //       credentials: true,
+    //     },
+    //     security: true,
+    //     payload: {
+    //       maxBytes: 5242880,
+    //     },
+    //   },
+    // });
 
     // REGISTER HAPI ROUTES
     await Router.loadRoutes(server);
