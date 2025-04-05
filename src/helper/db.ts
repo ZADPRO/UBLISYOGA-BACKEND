@@ -3,21 +3,21 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// const pool = new Pool({
-//   user: process.env.DB_USER || "postgres",
-//   host: process.env.DB_HOST || "13.233.156.218",
-//   database: process.env.DB_NAME || "ublis_backend",
-//   password: process.env.DB_PASSWORD || "1967",
-//   port: Number(process.env.DB_PORT) || 5432,
-// });
-
 const pool = new Pool({
   user: process.env.DB_USER || "postgres",
-  host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "master_testing_db",
-  password: process.env.DB_PASSWORD || "vijay",
+  host: process.env.DB_HOST || "13.233.156.218",
+  database: process.env.DB_NAME || "ublis_backend",
+  password: process.env.DB_PASSWORD || "1967",
   port: Number(process.env.DB_PORT) || 5432,
 });
+
+// const pool = new Pool({
+//   user: process.env.DB_USER || "postgres",
+//   host: process.env.DB_HOST || "localhost",
+//   database: process.env.DB_NAME || "master_testing_db",
+//   password: process.env.DB_PASSWORD || "vijay",
+//   port: Number(process.env.DB_PORT) || 5432,
+// });
 
 // const pool = new Pool({
 //   user: process.env.DB_USER || "ublisyogadb_user",
