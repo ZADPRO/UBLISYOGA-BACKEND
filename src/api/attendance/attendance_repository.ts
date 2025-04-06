@@ -59,6 +59,11 @@ export class AttendanceRepository {
         refTime: item.refTime,
         usercount: item.usercount,
       }));
+      console.log("Date line -------- 62", Date);
+      console.log(
+        "JSON.stringify(timeRanges line -------------63)",
+        JSON.stringify(timeRanges)
+      );
       const attendanceCounts = await attendanceQuery(getOfflineCount, [
         todayDate,
         JSON.stringify(timeRanges),
