@@ -53,7 +53,7 @@ export const userAttendance = `WITH ordered_punch_times AS (
         TO_CHAR(punch_time AT TIME ZONE 'Asia/Kolkata', 'DD/MM/YYYY, HH12:MI:SS AM') AS "formatted_punch_time",
         LAG(punch_time) OVER (PARTITION BY emp_code, TO_CHAR(punch_time AT TIME ZONE 'Asia/Kolkata', 'DD/MM/YYYY') ORDER BY punch_time) AS prev_punch_time
     FROM 
-        public.iclock_transaction
+        public."iclock_transaction"
     WHERE 
         TO_CHAR(punch_time AT TIME ZONE 'Asia/Kolkata', 'Month/YYYY') = TO_CHAR(TO_TIMESTAMP($2, 'Month/YYYY'), 'Month/YYYY')
         AND emp_code = $1
@@ -539,7 +539,7 @@ export const getAttendanceDatas = `WITH
         ORDER BY punch_time
       ) AS prev_punch_time
     FROM
-      public.iclock_transaction
+      public."iclock_transaction"
     WHERE
       punch_time::date >= TO_DATE($1, 'DD/MM/YYYY')
       AND punch_time::date <= TO_DATE($2, 'DD/MM/YYYY')
@@ -605,7 +605,7 @@ FROM
           punch_time
       ) AS prev_punch_time
     FROM
-      public.iclock_transaction
+      public."iclock_transaction"
     WHERE
       punch_time::date >= TO_DATE($1, 'DD/MM/YYYY')
       AND punch_time::date <= TO_DATE($2, 'DD/MM/YYYY')
@@ -771,7 +771,7 @@ export const petUserAttendCount = `WITH
           ict.punch_time
       ) AS previous_punch_time
     FROM
-      public.iclock_transaction ict
+      public."iclock_transaction" ict
       JOIN package_data pd ON ict.emp_code = pd.staff_id
     WHERE
       ict.emp_code NOT LIKE '%S%'
