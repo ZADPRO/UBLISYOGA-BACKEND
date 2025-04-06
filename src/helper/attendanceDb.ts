@@ -33,6 +33,8 @@ export const attendanceQuery = async (
 ): Promise<any[]> => {
   let client: PoolClient | null = null;
   try {
+    console.log("pool line -------- 36", pool);
+
     client = await pool.connect(); // Connect to DB
     const result = await client.query(query, params); // Execute query
     return result.rows; // Return rows from the result
@@ -47,12 +49,14 @@ export const attendanceQuery = async (
 
 // Method to get a client from the pool for transactions
 export const getAttendance = async (): Promise<PoolClient> => {
+  console.log("pool line ------ 52", pool);
   const client = await pool.connect(); // Return a connected client
   return client;
 };
 
 // Optionally, create a method to close the pool when the app shuts down
 export const closeAttendance = async () => {
+  console.log("pool line ------ 59", pool);
   try {
     await pool.end();
     console.log("Database pool has been closed.");
