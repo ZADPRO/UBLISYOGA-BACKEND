@@ -11,12 +11,19 @@ dotenv.config();
 //   port: Number(process.env.DB_PORT) || 5432,
 // });
 
+// const pool = new Pool({
+//   user: process.env.DB_ATT_USER,
+//   host: process.env.DB_ATT_HOST,
+//   database: process.env.DB_ATT_NAME,
+//   password: process.env.DB_ATT_PASSWORD,
+//   port: Number(process.env.DB_ATT_PORT),
+// });
 const pool = new Pool({
-  user: process.env.DB_ATT_USER,
-  host: process.env.DB_ATT_HOST,
-  database: process.env.DB_ATT_NAME,
-  password: process.env.DB_ATT_PASSWORD,
-  port: Number(process.env.DB_ATT_PORT),
+  user: "attendance",
+  host: "13.203.158.161",
+  database: "attendance",
+  password: "ublisattendance",
+  port: 5432,
 });
 
 // Helper function to execute a query
