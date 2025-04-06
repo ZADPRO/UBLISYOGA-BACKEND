@@ -12,11 +12,11 @@ dotenv.config();
 // });
 
 const pool = new Pool({
-  user: process.env.DB_USER || "attendance",
-  host: process.env.DB_HOST || "13.203.158.161",
-  database: process.env.DB_NAME || "attendance",
-  password: process.env.DB_PASSWORD || "ublisattendance",
-  port: Number(process.env.DB_PORT) || 5432,
+  user: process.env.DB_ATT_USER,
+  host: process.env.DB_ATT_HOST,
+  database: process.env.DB_ATT_NAME,
+  password: process.env.DB_ATT_PASSWORD,
+  port: Number(process.env.DB_ATT_PORT),
 });
 
 // Helper function to execute a query
@@ -24,7 +24,7 @@ export const attendanceQuery = async (
   query: string,
   params: any[] = []
 ): Promise<any[]> => {
-  let client: PoolClient | null = null; 
+  let client: PoolClient | null = null;
   try {
     client = await pool.connect(); // Connect to DB
     const result = await client.query(query, params); // Execute query
