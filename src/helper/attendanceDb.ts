@@ -3,27 +3,12 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// const pool = new Pool({
-//   user: process.env.DB_USER || "postgres",
-//   host: process.env.DB_HOST || "13.232.190.189",
-//   database: process.env.DB_NAME || "ublis_backend",
-//   password: process.env.DB_PASSWORD || "1967",
-//   port: Number(process.env.DB_PORT) || 5432,
-// });
-
-// const pool = new Pool({
-//   user: process.env.DB_ATT_USER,
-//   host: process.env.DB_ATT_HOST,
-//   database: process.env.DB_ATT_NAME,
-//   password: process.env.DB_ATT_PASSWORD,
-//   port: Number(process.env.DB_ATT_PORT),
-// });
 const pool = new Pool({
-  user: "attendance",
-  host: "13.203.158.161",
-  database: "attendance",
-  password: "ublisattendance",
-  port: 5432,
+  user: process.env.DB_ATT_USER,
+  host: process.env.DB_ATT_HOST,
+  database: process.env.DB_ATT_NAME,
+  password: process.env.DB_ATT_PASSWORD,
+  port: Number(process.env.DB_ATT_PORT),
 });
 
 // Helper function to execute a query
