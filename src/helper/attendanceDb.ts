@@ -32,9 +32,8 @@ export const attendanceQuery = async (
   params: any[] = []
 ): Promise<any[]> => {
   let client: PoolClient | null = null;
+  console.log("pool line -------- 36", pool);
   try {
-    console.log("pool line -------- 36", pool);
-
     client = await pool.connect(); // Connect to DB
     const result = await client.query(query, params); // Execute query
     return result.rows; // Return rows from the result
