@@ -119,7 +119,7 @@ filtered_entries AS (
     ar.rangeEndFormatted,
     LAG(ict.punch_time) OVER (PARTITION BY ict.emp_code ORDER BY ict.punch_time) AS previous_punch_time
   FROM 
-    public.iclock_transaction ict
+    public."iclock_transaction" ict
   LEFT JOIN 
     adjusted_ranges ar
   ON 
