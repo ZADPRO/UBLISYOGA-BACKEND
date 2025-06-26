@@ -3,12 +3,20 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// const pool = new Pool({
+//   user: process.env.DB2_USER,
+//   host: process.env.DB2_HOST,
+//   database: process.env.DB2_NAME,
+//   password: process.env.DB2_PASSWORD,
+//   port: Number(process.env.DB2_PORT),
+// });
+
 const pool = new Pool({
-  user: process.env.DB2_USER,
-  host: process.env.DB2_HOST,
-  database: process.env.DB2_NAME,
-  password: process.env.DB2_PASSWORD,
-  port: Number(process.env.DB2_PORT),
+  user: process.env.DB1_USER,
+  host: process.env.DB1_HOST,
+  database: process.env.DB1_NAME,
+  password: process.env.DB1_PASSWORD,
+  port: Number(process.env.DB1_PORT),
 });
 
 // Helper function to execute a query
